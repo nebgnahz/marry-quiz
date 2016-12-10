@@ -134,10 +134,11 @@ class App extends Component {
 
   responseFacebook(response) {
     console.log(response);
-    if (response.status === "unknown") {
-    } else {
+    if (response.status !== "unknown" && response.status !== undefined) {
       alert("You are logged as " + response.name);
       this.setState({ login: true });
+    } else {
+      alert("You must login facebook to continue");
     }
   }
 
@@ -154,11 +155,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-      <div className="App-header">
-      <img src={logo} className="App-logo" alt="logo" />
-      <h2>Marry Quiz</h2>
-      </div>
-      { this.state.login ? this.state.result ? this.renderResult() : this.renderQuiz() : this.renderFbLogin() }
+        { this.state.login ? this.state.result ? this.renderResult() : this.renderQuiz() : this.renderFbLogin() }
       </div>
     );
   }
