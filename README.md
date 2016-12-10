@@ -1,5 +1,4 @@
 Marry Quiz
-
 ---
 
 Want to do a quick quiz to know who your Mr. Right or Mrs. Right is?
@@ -34,5 +33,6 @@ hashes. This is highly recommended.
 
 - The app is created with
   [Create React App](https://github.com/facebookincubator/create-react-app)
-- Closely follow the tutorial and reuse the code from
-  [mitchgavan/react-multi-choice-quiz](https://github.com/mitchgavan/react-multi-choice-quiz).
+- The [nice tutorial](http://mitchgavan.com/react-quiz/) and the repository
+  [mitchgavan/react-multi-choice-quiz](https://github.com/mitchgavan/react-multi-choice-quiz)
+  helped a lot during the initial development.
