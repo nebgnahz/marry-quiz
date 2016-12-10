@@ -1,3 +1,5 @@
+Forked from https://github.com/mitchgavan/react-multi-choice-quiz. However, Github doesn't allow me to change the repository name if it's forked. Hence a `clone` and `push`. Credit goes to this wonderful [tutorial](http://mitchgavan.com/react-quiz/).
+
 # React Quiz
 
 [View demo](http://mitchgavan.com/react-multi-choice-quiz/)
