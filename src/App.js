@@ -2,9 +2,8 @@ import React, { Component } from 'react';
 import update from 'react-addons-update';
 import quizQuestions from './api/quizQuestions';
 import Quiz from './components/Quiz';
-import FacebookLogin from 'react-facebook-login';
 import Result from './components/Result';
-import logo from './svg/logo.svg';
+import Start from './components/Start';
 import './App.css';
 
 class App extends Component {
@@ -109,10 +108,6 @@ class App extends Component {
     }
   }
 
-  setLogin() {
-    console.log("set login");
-  }
-
   renderQuiz() {
     return (
       <Quiz
@@ -134,32 +129,30 @@ class App extends Component {
 
   responseFacebook(response) {
     console.log(response);
-    if (response.status !== "unknown" && response.status !== undefined) {
-      alert("You are logged as " + response.name);
-      this.setState({ login: true });
-    } else {
+    if (response.status === "unknown") {
       alert("You must login facebook to continue");
+    } else if (response.name !== "") {
+      alert("You are logged as " + response.name);
+      console.log(response.picture);
+      this.setState({ login: true });
     }
   }
 
-  renderFbLogin() {
-    return (
-      <FacebookLogin
-      appId="1480241568671838"
-      autoLoad={true}
-      fields="name"
-      callback={this.responseFacebook} />
-    )
-  }
-
   render() {
-    return (
-      <div className="App">
-        { this.state.login ? this.state.result ? this.renderResult() : this.renderQuiz() : this.renderFbLogin() }
-      </div>
-    );
+    if (!this.state.login) {
+      return (
+        <div className="App">
+          <Start loginCallback={this.responseFacebook} />
+        </div>
+      )
+    } else {
+      return (
+        <div className="App">
+          { this.state.result ? this.renderResult() : this.renderQuiz() }
+        </div>
+      )
+    }
   }
-
 }
 
 export default App;
