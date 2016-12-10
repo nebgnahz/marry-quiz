@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import update from 'react-addons-update';
 import quizQuestions from './api/quizQuestions';
 import Quiz from './components/Quiz';
+import FacebookLogin from 'react-facebook-login';
 import Result from './components/Result';
 import logo from './svg/logo.svg';
 import './App.css';
@@ -12,6 +13,7 @@ class App extends Component {
     super(props);
 
     this.state = {
+      login: false,
       counter: 0,
       questionId: 1,
       question: '',
@@ -26,6 +28,7 @@ class App extends Component {
     };
 
     this.handleAnswerSelected = this.handleAnswerSelected.bind(this);
+    this.responseFacebook = this.responseFacebook.bind(this);
   }
 
   componentWillMount() {
@@ -59,9 +62,9 @@ class App extends Component {
     this.setUserAnswer(event.currentTarget.value);
 
     if (this.state.questionId < quizQuestions.length) {
-        setTimeout(() => this.setNextQuestion(), 300);
+      setTimeout(() => this.setNextQuestion(), 300);
     } else {
-        setTimeout(() => this.setResults(this.getResults()), 300);
+      setTimeout(() => this.setResults(this.getResults()), 300);
     }
   }
 
@@ -71,8 +74,8 @@ class App extends Component {
     });
 
     this.setState({
-        answersCount: updatedAnswersCount,
-        answer: answer
+      answersCount: updatedAnswersCount,
+      answer: answer
     });
   }
 
@@ -81,11 +84,11 @@ class App extends Component {
     const questionId = this.state.questionId + 1;
 
     this.setState({
-        counter: counter,
-        questionId: questionId,
-        question: quizQuestions[counter].question,
-        answerOptions: quizQuestions[counter].answers,
-        answer: ''
+      counter: counter,
+      questionId: questionId,
+      question: quizQuestions[counter].question,
+      answerOptions: quizQuestions[counter].answers,
+      answer: ''
     });
   }
 
@@ -106,15 +109,19 @@ class App extends Component {
     }
   }
 
+  setLogin() {
+    console.log("set login");
+  }
+
   renderQuiz() {
     return (
       <Quiz
-        answer={this.state.answer}
-        answerOptions={this.state.answerOptions}
-        questionId={this.state.questionId}
-        question={this.state.question}
-        questionTotal={quizQuestions.length}
-        onAnswerSelected={this.handleAnswerSelected}
+      answer={this.state.answer}
+      answerOptions={this.state.answerOptions}
+      questionId={this.state.questionId}
+      question={this.state.question}
+      questionTotal={quizQuestions.length}
+      onAnswerSelected={this.handleAnswerSelected}
       />
     );
   }
@@ -125,14 +132,33 @@ class App extends Component {
     );
   }
 
+  responseFacebook(response) {
+    console.log(response);
+    if (response.status === "unknown") {
+    } else {
+      alert("You are logged as " + response.name);
+      this.setState({ login: true });
+    }
+  }
+
+  renderFbLogin() {
+    return (
+      <FacebookLogin
+      appId="1480241568671838"
+      autoLoad={true}
+      fields="name"
+      callback={this.responseFacebook} />
+    )
+  }
+
   render() {
     return (
       <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>React Quiz</h2>
-        </div>
-        {this.state.result ? this.renderResult() : this.renderQuiz()}
+      <div className="App-header">
+      <img src={logo} className="App-logo" alt="logo" />
+      <h2>Marry Quiz</h2>
+      </div>
+      { this.state.login ? this.state.result ? this.renderResult() : this.renderQuiz() : this.renderFbLogin() }
       </div>
     );
   }
