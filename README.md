@@ -1,27 +1,38 @@
-# React Quiz
+Marry Quiz
 
-[View demo](http://mitchgavan.com/react-multi-choice-quiz/)
+---
 
-Created with [Create React App](https://github.com/facebookincubator/create-react-app)
+Want to do a quick quiz to know who your Mr. Right or Mrs. Right is?
 
-## Get Started
-Install dependencies in your project directory with:
-### `npm install`
+Curious about which country is the best place for your wedding?
 
-In the project directory, you can then run:
+[Click here](https://nebgnahz.github.io/marry-quiz/) for a quiz and you will
+have your answer!
 
-### `npm start`
+# Project Reuse Guide
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+```shell
+## Install dependencies in your project directory with:
+$ npm install
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+## For development
+$ npm start
 
-### `npm run build`
+## For production build
+$ npm run build
+```
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+By default, development uses [http://localhost:3000](http://localhost:3000) as
+the URL.
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+In production, you need to modify `package.json` to set the homepage. It will
+build the app to the `build` folder. Production mode optimizes the build for the
+best performance: such as minified file and the filenames include the
+hashes. This is highly recommended.
+
+# Acknowledgement
+
+- The app is created with
+  [Create React App](https://github.com/facebookincubator/create-react-app)
+- Closely follow the tutorial and reuse the code from
+  [mitchgavan/react-multi-choice-quiz](https://github.com/mitchgavan/react-multi-choice-quiz).

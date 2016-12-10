@@ -1,8 +1,8 @@
 {
-  "name": "react-quiz",
+  "name": "marry-quiz",
   "version": "0.0.1",
   "private": true,
-  "homepage": "http://mitchgavan.com/react-multi-choice-quiz/",
+  "homepage": "https://nebgnahz.github.io/marry-quiz/",
   "devDependencies": {
     "react-scripts": "0.2.1"
   },
