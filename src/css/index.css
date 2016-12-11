@@ -139,3 +139,17 @@ body {
     opacity: 1;
     transition: opacity 0.5s ease-in-out;
 }
+
+/* Share */
+.share-container {
+    padding: 1.5rem 2.5rem 1.5rem 2.5rem;
+}
+.share {
+    display: inline-block;
+    margin-right: 30px;
+    text-align: center;
+}
+.share-count {
+    margin-top: 3px;
+    font-size: 12px;
+}
