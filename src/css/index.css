@@ -43,6 +43,12 @@ body {
   font-size: 14px;
 }
 
+/* User information */
+.user {
+  margin: 0;
+  padding: 1.5rem 2.5rem 0.5rem 2.5rem;
+}
+
 /* Question Component */
 .question {
   margin: 0;

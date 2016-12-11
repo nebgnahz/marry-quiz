@@ -23,7 +23,10 @@ class App extends Component {
         Microsoft: 0,
         Sony: 0
       },
-      result: ''
+      result: '',
+      userName: '',
+      fbId: '',
+      fbPicture: []
     };
 
     this.handleAnswerSelected = this.handleAnswerSelected.bind(this);
@@ -111,12 +114,13 @@ class App extends Component {
   renderQuiz() {
     return (
       <Quiz
-      answer={this.state.answer}
-      answerOptions={this.state.answerOptions}
-      questionId={this.state.questionId}
-      question={this.state.question}
-      questionTotal={quizQuestions.length}
-      onAnswerSelected={this.handleAnswerSelected}
+          answer={this.state.answer}
+          answerOptions={this.state.answerOptions}
+          questionId={this.state.questionId}
+          question={this.state.question}
+          questionTotal={quizQuestions.length}
+          onAnswerSelected={this.handleAnswerSelected}
+          userName={this.state.userName}
       />
     );
   }
@@ -130,11 +134,16 @@ class App extends Component {
   responseFacebook(response) {
     console.log(response);
     if (response.status === "unknown") {
-      alert("You must login facebook to continue");
+      alert("You must login with facebook to continue");
     } else if (response.name !== "") {
-      alert("You are logged as " + response.name);
-      console.log(response.picture);
-      this.setState({ login: true });
+      // We get the first initial response, extract name and id
+      console.log(response.name);
+      this.setState({
+        userName: response.name,
+        fbId: response.id,
+        fbPicture: response.picture,
+        login: true,
+      });
     }
   }
 
@@ -148,7 +157,7 @@ class App extends Component {
     } else {
       return (
         <div className="App">
-          { this.state.result ? this.renderResult() : this.renderQuiz() }
+        { this.state.result ? this.renderResult() : this.renderQuiz() }
         </div>
       )
     }

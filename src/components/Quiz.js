@@ -28,7 +28,8 @@ function Quiz(props) {
         transitionAppear
         transitionAppearTimeout={500}
     >
-      <div key={props.questionId}>
+      <div className="card" key={props.questionId}>
+        <h2 className="user">Hello, {props.userName}</h2>
         <QuestionCount
             counter={props.questionId}
             total={props.questionTotal}
@@ -48,7 +49,8 @@ Quiz.propTypes = {
   question: React.PropTypes.string.isRequired,
   questionId: React.PropTypes.number.isRequired,
   questionTotal: React.PropTypes.number.isRequired,
-  onAnswerSelected: React.PropTypes.func.isRequired
+  onAnswerSelected: React.PropTypes.func.isRequired,
+  userName: React.PropTypes.string.isRequired
 };
 
 export default Quiz;
