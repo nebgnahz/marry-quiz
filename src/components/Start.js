@@ -24,12 +24,12 @@ function Start(props) {
         <div className="iphoneandroid">
           <div className="iphone">
             <div className="mask">
-              <img className="mask-img" role="presentation" src="img/mobileapp.svg" />
+              <img className="mask-img" role="presentation" src="svg/mobileapp.svg" />
             </div>
           </div>
           <div className="android">
             <div className="mask">
-              <img className="mask-img" role="presentation" src="img/mobileapp.svg" />
+              <img className="mask-img" role="presentation" src="svg/mobileapp.svg" />
             </div>
           </div>
         </div>
